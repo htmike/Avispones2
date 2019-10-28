@@ -1,0 +1,8 @@
+<section>
+    <div *ngFor="let field of fields" class="data">
+        <div>
+            {{ field.value < 9 ? '0' + field.value : field.value}}
+        </div>
+        <h3>{{ field.name }}</h3>
+    </div>
+</section>

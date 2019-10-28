@@ -1,0 +1,29 @@
+$base : #222
+    
+.name
+    margin: 0
+    margin-bottom: 8px
+
+.score
+    display: flex
+    justify-content: space-around
+    height: 70px
+    div
+        position: absolute
+        background: $base
+        width: 31px
+        height: 55px
+        border-top: solid 2px #fff
+        border-bottom: solid 2px #aaa
+    div:first-child
+        transform: rotate(-60deg)
+    div:nth-child(2)
+        transform: rotate(60deg)
+    div:nth-child(3)
+        display: flex
+        align-items: center
+
+img 
+    width: 40%
+    display: flex
+    margin: 0 auto

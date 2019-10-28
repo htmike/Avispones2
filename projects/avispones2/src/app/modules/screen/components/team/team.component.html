@@ -1,0 +1,15 @@
+<h1 class="name">
+    {{ team.name | uppercase}}
+</h1>
+
+<div class="score">
+    <div></div>
+    <div></div>
+    <div>
+        <h2>
+            {{ team.score < 10 ? '0' + team.score : team.score}}
+        </h2>
+    </div>
+</div>
+
+<img [src]="team.logo" [alt]="team.name">
