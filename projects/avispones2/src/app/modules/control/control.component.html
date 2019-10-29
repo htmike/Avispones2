@@ -1,0 +1,18 @@
+<mat-toolbar>
+    <span>Avispones</span>
+    <small>Scoreboard v2.0.0</small>
+    <button class="uploadLogo" mat-icon-button (click)="openModal()"><mat-icon>file_upload</mat-icon></button>
+</mat-toolbar>
+<app-team-control [team]="teamHome"></app-team-control>
+<app-team-control [team]="teamGuest"></app-team-control>
+<app-score-data></app-score-data>
+<app-timer></app-timer>
+
+<button mat-raised-button (click)="openScreen()" color="primary">
+    <small>Mostrar pantalla</small>
+    <mat-icon>play_arrow</mat-icon>
+</button>
+<button mat-raised-button (click)="closeScreen()">
+    <small>Cerrar pantalla</small>
+    <mat-icon>close</mat-icon>
+</button>
