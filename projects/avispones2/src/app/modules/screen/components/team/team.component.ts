@@ -8,8 +8,11 @@ import { Team } from '../../classes/team';
 })
 export class TeamComponent implements OnInit {
   @Input() team: Team;
+  logoDefault: string;
 
-  constructor() {}
+  constructor() {
+    this.logoDefault = 'assets/logo.png';
+  }
 
   ngOnInit() {
   }

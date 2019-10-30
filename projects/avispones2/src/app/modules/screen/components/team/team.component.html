@@ -12,4 +12,4 @@
     </div>
 </div>
 
-<img [src]="team.logo" [alt]="team.name">
+<img [src]="team.logo? team.logo : logoDefault" [alt]="team.name">
