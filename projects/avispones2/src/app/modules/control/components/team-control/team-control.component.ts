@@ -18,12 +18,14 @@ export class TeamControlComponent implements OnInit {
 
   ngOnInit() {
     this.teamScore = new FormGroup({
+      id: new FormControl(this.team.id),
       name: new FormControl(this.team.name),
       score: new FormControl(this.team.score)
     });
   }
 
   updateScore() {
-    this.scoreService.update(this.team.name);
+    const body = this.teamScore.value;
+    const message = this.scoreService.updateScoreById(this.team.id, body);
   }
 }

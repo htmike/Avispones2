@@ -23,7 +23,7 @@ export class ScoreDataComponent implements OnInit {
   }
 
   updateScore() {
-    this.scoreService.updateExtra();
+    this.scoreService.updateExtra( this.scoreForm.value);
   }
 
 }

@@ -1,17 +1,14 @@
-<form [formGroup]="scoreForm">
+<form [formGroup]="scoreForm" (submit)="updateScore()">
     <mat-form-field>
-        <input type="number" min="0" max="99" matInput placeholder="Down" formControlName="down" required>
+        <input type="number" min="0" max="99" matInput placeholder="Down" formControlName="down" required (keyup)="updateScore()">
     </mat-form-field>
     <mat-form-field>
-        <input type="number" min="0" max="99" matInput placeholder="To go" formControlName="toGo" required>
+        <input type="number" min="0" max="99" matInput placeholder="To go" formControlName="toGo" required (keyup)="updateScore()">
     </mat-form-field>
     <mat-form-field>
-        <input type="number" min="0" max="99" matInput placeholder="Ball on" formControlName="ballOn" required>
+        <input type="number" min="0" max="99" matInput placeholder="Ball on" formControlName="ballOn" required (keyup)="updateScore()">
     </mat-form-field>
     <mat-form-field>
-        <input type="number" min="0" max="99" matInput placeholder="QTR" formControlName="qtr" required>
+        <input type="number" min="0" max="99" matInput placeholder="QTR" formControlName="qtr" required (keyup)="updateScore()">
     </mat-form-field>
-    <button type="submit" mat-button color="accent">
-        Actualizar
-    </button>
 </form>

@@ -14,8 +14,8 @@ export class ControlComponent implements OnInit {
   screen: Window;
 
   constructor( private dialog: MatDialog ) {
-    this.teamHome = new Team();
-    this.teamGuest = new Team('guest');
+    this.teamHome = new Team(1);
+    this.teamGuest = new Team(2, 'guest');
   }
 
   ngOnInit() {
