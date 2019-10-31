@@ -17,6 +17,7 @@ server.use( (req, res, next) => {
   })
 
 server.get('/score/:id', (req, res, next) => {
+    res.status(200)
     const id = req.params.id
     const filePath = './server/score-' + id + '.json'
     if ( fs.fs.existsSync(filePath) ) {
@@ -28,14 +29,17 @@ server.get('/score/:id', (req, res, next) => {
     next();
 })
 server.post('/score/:id', (req, res, next) => {
+    res.status(200)
     const id = req.params.id
     const score = JSON.stringify(req.body)
     const filePath = './server/score-' + id + '.json'
     fs.writeFileSync(filePath, score)
     console.log(score)
+    res.end()
     next()
 })
 server.get('/data', (req, res, next) => {
+    res.status(200)
     const filePath = './server/data.json'
     if ( fs.fs.existsSync(filePath) ) {
         const score = fs.readFileSync(filePath, 'utf-8')
@@ -46,11 +50,13 @@ server.get('/data', (req, res, next) => {
     next();
 })
 server.post('/data', (req, res, next) => {
+    res.status(200)
     const score = JSON.stringify(req.body)
     const filePath = './server/data.json'
     fs.writeFileSync(filePath, score)
     console.log(score)
     next()
+    res.end()
 })
 
 server.listen(PORT, () => {
