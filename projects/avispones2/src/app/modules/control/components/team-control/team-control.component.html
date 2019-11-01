@@ -1,6 +1,6 @@
 <form [formGroup]="teamScore" (ngSubmit)="updateScore()">
     <mat-form-field class="field" color="primary">
-        <input type="text" maxlength="20" matInput placeholder="Nombre" formControlName="name" required (keyup)="updateScore()">
+        <input type="text" maxlength="10" matInput placeholder="Nombre" formControlName="name" required (keyup)="updateScore()">
     </mat-form-field>
     <mat-form-field class="field" color="primary">
         <input type="number" min="0" max="99" matInput placeholder="Marcador" formControlName="score" required (keyup)="updateScore()">
