@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from './classes/team';
 import { ScoreService } from '../../services/score.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-screen',
@@ -8,14 +9,15 @@ import { ScoreService } from '../../services/score.service';
   styleUrls: ['./screen.component.sass']
 })
 export class ScreenComponent implements OnInit {
-  home: Team;
-  guest: Team;
+  home: Observable<Team>;
+  guest: Observable<Team>;
   fields: Array<any>;
   data: any;
 
   constructor( private scoreService: ScoreService ) {
-    this.home = new Team(1);
-    this.guest = new Team(2, 'guest');
+    setInterval( () => {
+      this.getScoreData();
+    }, 2000 );
     this.data = {
       down: 0,
       toGo: 0,
@@ -26,16 +28,6 @@ export class ScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.scoreService.getScoreById(1).subscribe( (data: Team) => {
-      this.home = data;
-    });
-    this.scoreService.getScoreById(2).subscribe( (data: Team) => {
-      this.guest = data;
-    });
-    this.scoreService.getExtra().subscribe( data => {
-      this.data = data;
-      this.setFields();
-    });
   }
 
   setFields() {
@@ -45,5 +37,13 @@ export class ScreenComponent implements OnInit {
       { name: 'ball on', value: this.data.ballOn },
       { name: 'qtr', value: this.data.qtr },
     ];
+  }
+  getScoreData() {
+    this.home = this.scoreService.getScoreById(1);
+    this.guest = this.scoreService.getScoreById(2);
+    this.scoreService.getExtra().subscribe( data => {
+      this.data = data;
+      this.setFields();
+    });
   }
 }

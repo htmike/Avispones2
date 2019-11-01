@@ -1,5 +1,5 @@
 <h1 class="name">
-    {{ team.name | uppercase}}
+    {{ (team|async).name | uppercase}}
 </h1>
 
 <div class="score">
@@ -7,9 +7,9 @@
     <div></div>
     <div>
         <h2>
-            {{ team.score < 10 ? '0' + team.score : team.score}}
+            {{ (team|async).score < 10 ? '0' + (team|async).score : (team|async).score}}
         </h2>
     </div>
 </div>
 
-<img [src]="team.logo? team.logo : logoDefault" [alt]="team.name">
+<img [src]="(team|async)?.logo ? team.logo : logoDefault" [alt]="(team|async)?.name">
