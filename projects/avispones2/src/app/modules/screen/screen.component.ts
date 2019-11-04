@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./screen.component.sass']
 })
 export class ScreenComponent implements OnInit {
-  home: Observable<Team>;
-  guest: Observable<Team>;
+  home: Team;
+  guest: Team;
   fields: Array<any>;
   data: any;
 
@@ -39,8 +39,12 @@ export class ScreenComponent implements OnInit {
     ];
   }
   getScoreData() {
-    this.home = this.scoreService.getScoreById(1);
-    this.guest = this.scoreService.getScoreById(2);
+    this.scoreService.getScoreById(1).subscribe( (score: Team) => {
+      this.home = score;
+    });
+    this.scoreService.getScoreById(2).subscribe( (score: Team) => {
+      this.guest = score;
+    });
     this.scoreService.getExtra().subscribe( data => {
       this.data = data;
       this.setFields();

@@ -1,4 +1,4 @@
-<section *ngIf="home">
+<section *ngIf="home != undefined && guest != undefined">
     <div class="col">
         <app-team [team]="home"></app-team>
     </div>

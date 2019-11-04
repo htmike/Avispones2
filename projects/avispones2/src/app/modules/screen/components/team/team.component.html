@@ -1,15 +1,17 @@
-<h1 class="name">
-    {{ (team|async).name | uppercase}}
-</h1>
-
-<div class="score">
-    <div></div>
-    <div></div>
-    <div>
-        <h2>
-            {{ (team|async).score < 10 ? '0' + (team|async).score : (team|async).score}}
-        </h2>
+<section *ngIf="team">
+    <h1>
+        {{ team.name | uppercase}}
+    </h1>
+    
+    <div class="score">
+        <div></div>
+        <div></div>
+        <div>
+            <h2>
+                {{ team.score < 10 ? '0' + team.score : team.score }}
+            </h2>
+        </div>
     </div>
-</div>
-
-<img [src]="(team|async)?.logo ? team.logo : logoDefault" [alt]="(team|async)?.name">
+    
+    <img [src]="team.logo ? team.logo : logoDefault" [alt]="team.name">
+</section>

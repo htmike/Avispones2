@@ -12,6 +12,7 @@ export class TeamComponent implements OnInit {
 
   constructor() {
     this.logoDefault = 'assets/logo.png';
+    this.team = new Team(1);
   }
 
   ngOnInit() {

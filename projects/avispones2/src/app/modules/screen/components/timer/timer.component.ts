@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Timer } from '../../classes/timer';
+import { TimerService } from 'projects/avispones2/src/app/services/timer.service';
 
 @Component({
   selector: 'app-timer',
@@ -9,8 +10,12 @@ import { Timer } from '../../classes/timer';
 export class TimerComponent {
   timer: Timer;
 
-  constructor() {
+  constructor( private timerService: TimerService ) {
     this.timer = new Timer();
+    timerService.getTimer().subscribe( data => {
+      console.log(data);
+    });
   }
+
 
 }
