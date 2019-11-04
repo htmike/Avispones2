@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Team } from '../modules/screen/classes/team';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { DataScore } from '../classes/data';
 
 @Injectable({
   providedIn: 'root',
@@ -24,8 +25,8 @@ export class ScoreService {
     });
   }
 
-  getExtra() {
-    return this.http.get<Team>(this.mainUrl + 'data');
+  getExtra(): Observable<DataScore> {
+    return this.http.get<DataScore>(this.mainUrl + 'data');
   }
 
   updateExtra( body: any) {
