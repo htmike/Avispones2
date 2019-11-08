@@ -12,9 +12,12 @@ export class TimerComponent {
 
   constructor( private timerService: TimerService ) {
     this.timer = new Timer();
-    timerService.getTimer().subscribe( data => {
-      console.log(data);
-    });
+    setInterval( () => {
+      timerService.getTimer().subscribe( data => {
+        this.timer.minutes = data.timer.split(':')[0];
+        this.timer.seconds = data.timer.split(':')[1];
+      });
+    }, 500);
   }
 
 
