@@ -107,7 +107,7 @@ function createWindow() {
         backgroundColor: '#111',
         icon: path.join(__dirname, 'assets/logo.png')
     });
-    win.loadURL('http://localhost:4200')
+    win.loadURL('http://localhost:7373')
     win.setMenuBarVisibility(false)
     win.on('closed', () => {
         win = null;
