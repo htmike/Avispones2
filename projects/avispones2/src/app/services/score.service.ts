@@ -11,27 +11,27 @@ import { DataScore } from '../classes/data';
 export class ScoreService {
   mainUrl: string;
   constructor( private http: HttpClient ) {
-    this.mainUrl = 'http://localhost:7373/';
+    this.mainUrl = 'localhost:7373';
   }
 
   getScoreById( id: number ): Observable<Team> {
-    return this.http.get<Team>(this.mainUrl + 'score/' + id);
+    return this.http.get<Team>(`http://${this.mainUrl}/score/${id}`);
   }
 
   updateScoreById( id: number, body: any ): any {
     const headers = new HttpHeaders({'Content-type': 'application/json'});
-    return this.http.post<Team>(this.mainUrl + 'score/' + id, body, { headers }).subscribe( response => {
+    return this.http.post<Team>(`http://${this.mainUrl}/score/${id}`, body, { headers }).subscribe( response => {
       return response;
     });
   }
 
   getExtra(): Observable<DataScore> {
-    return this.http.get<DataScore>(this.mainUrl + 'data');
+    return this.http.get<DataScore>(`http://${this.mainUrl}/data`);
   }
 
   updateExtra( body: any) {
     const headers = new HttpHeaders({'Content-type': 'application/json'});
-    return this.http.post( this.mainUrl + 'data', body, {headers}).subscribe( response => {
+    return this.http.post(`http://${this.mainUrl}/data`, body, {headers}).subscribe( response => {
       return response;
     });
   }

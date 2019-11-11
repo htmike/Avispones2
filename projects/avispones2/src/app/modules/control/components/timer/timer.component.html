@@ -1,8 +1,12 @@
-<form [formGroup]="timerForm">
-    <mat-form-field>
-        <input type="text" matInput placeholder="Temporizador" formControl="timer">
-    </mat-form-field>
-    <button type="submit" mat-button color="accent">
-        Actualizar
-    </button>
-</form>
+<mat-form-field>
+    <input type="time" matInput placeholder="Temporizador" formControl="timer">
+</mat-form-field>
+<button mat-icon-button (click)="playTimer()">
+    <mat-icon>play_arrow</mat-icon>
+</button>
+<button mat-icon-button (click)="pauseTimer()">
+    <mat-icon>pause</mat-icon>
+</button>
+<button mat-icon-button (click)="resetTimer()">
+    <mat-icon>stop</mat-icon>
+</button>

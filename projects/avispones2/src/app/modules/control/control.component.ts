@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from '../screen/classes/team';
 import { MatDialog } from '@angular/material';
+import { ScoreService } from '../../services/score.service';
 import { UploadLogoComponent } from './dialogs/upload-logo/upload-logo.component';
 
 @Component({
@@ -13,7 +14,7 @@ export class ControlComponent implements OnInit {
   teamGuest: Team;
   screen: Window;
 
-  constructor( private dialog: MatDialog ) {
+  constructor( private dialog: MatDialog, public scoreService: ScoreService ) {
     this.teamHome = new Team(1);
     this.teamGuest = new Team(2, 'guest');
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { TimerService } from 'projects/avispones2/src/app/services/timer.service';
 
 @Component({
   selector: 'app-timer',
@@ -7,15 +8,24 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./timer.component.sass']
 })
 export class TimerComponent implements OnInit {
-  timerForm: FormGroup;
+  timer: FormControl;
 
-  constructor() {
-    this.timerForm = new FormGroup({
-      timer: new FormControl('15:00')
-    });
+  constructor( private timerService: TimerService ) {
+    this.timer = new FormControl('15:00');
   }
 
   ngOnInit() {
+  }
+
+  playTimer() {this.timerService.playTimer( this.timer.value);
+  }
+
+  pauseTimer() {
+    this.timerService.pauseTimer();
+  }
+
+  resetTimer() {
+    this.timerService.resetTimer();
   }
 
 }

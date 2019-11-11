@@ -78,6 +78,7 @@ server.get('/timer', (req, res, next) => {
 server.post('/timer', (req, res, next) => {
     res.status(200)
     const timer = JSON.stringify(req.body)
+    console.log(timer)
     const filePath = './server/timer.json'
     fs.writeFileSync(filePath, timer)
     next()
