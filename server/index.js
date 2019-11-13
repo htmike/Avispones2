@@ -1,10 +1,12 @@
 const express = require('express')
 const server = express()
 
-const electron = require('electron');
-const { app, BrowserWindow, Menu } = require('electron');
+const electron = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 var path = require('path')
 
+module.paths.push(path.resolve('./node_modules'))
+module.paths.push(path.resolve('node_modules'))
 
 const fs = require('file-system')
 var bodyParser = require('body-parser')
@@ -107,7 +109,7 @@ function createWindow() {
         backgroundColor: '#111',
         icon: path.join(__dirname, 'assets/logo.png')
     });
-    win.loadURL('http://localhost:4200')
+    win.loadURL('http://localhost:7373/')
     win.setMenuBarVisibility(false)
     win.on('closed', () => {
         win = null;
