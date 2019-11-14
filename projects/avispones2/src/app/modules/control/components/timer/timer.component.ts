@@ -11,21 +11,25 @@ export class TimerComponent implements OnInit {
   timer: FormControl;
 
   constructor( private timerService: TimerService ) {
-    this.timer = new FormControl('15:00');
+    this.timer = new FormControl('');
   }
 
   ngOnInit() {
   }
 
-  playTimer() {this.timerService.playTimer( this.timer.value);
+  playTimer() {
+    this.timerService.timerData = JSON.stringify(this.timer.value);
+    this.timerService.playTimer( this.timerService.timerData );
   }
 
   pauseTimer() {
     this.timerService.pauseTimer();
+    this.timer.setValue( this.timerService.timerData );
   }
 
   resetTimer() {
     this.timerService.resetTimer();
+    this.timer.setValue( this.timerService.timerData );
   }
 
 }

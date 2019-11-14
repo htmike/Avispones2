@@ -1,12 +1,12 @@
-<section *ngIf="home != undefined && guest != undefined">
+<section>
     <div class="col">
-        <app-team [team]="home"></app-team>
+        <app-team [team]="scoreService.homeTeam"></app-team>
     </div>
     <div class="col">
         <app-timer></app-timer>
-        <app-data [fields]="fields"></app-data>
+        <app-data></app-data>
     </div>
     <div class="col">
-        <app-team [team]="guest"></app-team>
+        <app-team [team]="scoreService.guestTeam"></app-team>
     </div>
 </section>

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Team } from '../modules/screen/classes/team';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DataScore } from '../classes/data';
 
 @Injectable({
@@ -10,29 +8,46 @@ import { DataScore } from '../classes/data';
 })
 export class ScoreService {
   mainUrl: string;
-  constructor( private http: HttpClient ) {
-    this.mainUrl = 'localhost:7373';
-  }
+  homeTeam: Team;
+  guestTeam: Team;
+  dataScore: DataScore;
 
-  getScoreById( id: number ): Observable<Team> {
-    return this.http.get<Team>(`http://${this.mainUrl}/score/${id}`);
-  }
-
-  updateScoreById( id: number, body: any ): any {
-    const headers = new HttpHeaders({'Content-type': 'application/json'});
-    return this.http.post<Team>(`http://${this.mainUrl}/score/${id}`, body, { headers }).subscribe( response => {
-      return response;
+  constructor() {
+    this.homeTeam = new Team(1);
+    this.guestTeam = new Team(2, 'Guest');
+    setInterval( () => {
+      this.getDataScore();
+      this.getDataTeam();
     });
+    this.dataScore = new DataScore();
   }
 
-  getExtra(): Observable<DataScore> {
-    return this.http.get<DataScore>(`http://${this.mainUrl}/data`);
+  updateScoreById( id: number, body: any ): void {
+    const BODY = JSON.stringify(body);
+    if ( id === 1 ) {
+      this.homeTeam = body;
+      localStorage.setItem('home', BODY);
+    } else {
+      this.guestTeam = body;
+      localStorage.setItem('guest', BODY);
+    }
   }
 
-  updateExtra( body: any) {
-    const headers = new HttpHeaders({'Content-type': 'application/json'});
-    return this.http.post(`http://${this.mainUrl}/data`, body, {headers}).subscribe( response => {
-      return response;
-    });
+  updateExtra( body: any ) {
+    this.dataScore = body;
+    localStorage.setItem( 'dataScore', JSON.stringify(body));
+    console.log(this.dataScore)
+  }
+
+  getDataScore() {
+    const LOCAL = localStorage.getItem('dataScore');
+    this.dataScore = JSON.parse(LOCAL);
+  }
+
+  getDataTeam() {
+    const HOME = localStorage.getItem('home');
+    const GUEST = localStorage.getItem('guest');
+    this.homeTeam = JSON.parse(HOME);
+    this.guestTeam = JSON.parse(GUEST);
   }
 }
