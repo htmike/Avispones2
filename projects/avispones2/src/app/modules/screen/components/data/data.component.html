@@ -1,8 +1,26 @@
 <section>
-    <div *ngFor="let field of fields" class="data">
+    <div class="data">
         <div>
-            {{ field.value < 9 ? '0' + field.value : field.value}}
+            {{ scoreService.dataScore.down < 9 ? '0' + scoreService.dataScore.down : scoreService.dataScore.down }}
         </div>
-        <h3>{{ field.name }}</h3>
+        <h3>DOWN</h3>
+    </div>
+    <div class="data">
+        <div>
+            {{ scoreService.dataScore.toGo < 9 ? '0' + scoreService.dataScore.toGo : scoreService.dataScore.toGo }}
+        </div>
+        <h3>TO GO</h3>
+    </div>
+    <div class="data">
+        <div>
+            {{ scoreService.dataScore.ballOn < 9 ? '0' + scoreService.dataScore.ballOn : scoreService.dataScore.ballOn }}
+        </div>
+        <h3>BALL ON</h3>
+    </div>
+    <div class="data">
+        <div>
+            {{ scoreService.dataScore.qtr < 9 ? '0' + scoreService.dataScore.qtr : scoreService.dataScore.qtr }}
+        </div>
+        <h3>QTR</h3>
     </div>
 </section>
