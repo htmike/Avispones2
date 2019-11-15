@@ -23,7 +23,7 @@ export class ControlComponent implements OnInit {
   }
 
   openScreen() {
-    this.screen = window.open('/#/pantalla', 'screen', 'height=172, width=384, resize=false');
+    this.screen = window.open('#/pantalla', 'screen', 'height=172, width=384, resize=false');
   }
   closeScreen() {
     this.screen.close();
