@@ -25,7 +25,8 @@
             "aot": false,
             "assets": [
               "projects/avispones2/src/favicon.ico",
-              "projects/avispones2/src/assets"
+              "projects/avispones2/src/assets",
+              "projects/avispones2/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/avispones2/src/custom-theme.scss",
@@ -61,7 +62,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/avispones2/ngsw-config.json"
             }
           }
         },
@@ -91,7 +94,8 @@
             "karmaConfig": "projects/avispones2/karma.conf.js",
             "assets": [
               "projects/avispones2/src/favicon.ico",
-              "projects/avispones2/src/assets"
+              "projects/avispones2/src/assets",
+              "projects/avispones2/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/avispones2/src/styles.sass"
