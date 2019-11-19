@@ -5,9 +5,9 @@ export class DataScore {
     qtr: number;
 
     constructor() {
-        this.down = 0;
-        this.toGo = 0;
-        this.ballOn = 0;
-        this.qtr = 0;
+        this.down = 1;
+        this.toGo = 30;
+        this.ballOn = 50;
+        this.qtr = 1;
     }
 }
