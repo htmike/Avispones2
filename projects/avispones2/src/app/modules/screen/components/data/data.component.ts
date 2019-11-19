@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ScoreService } from 'projects/avispones2/src/app/services/score.service';
 
 @Component({
   selector: 'app-data',
@@ -6,9 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./data.component.sass']
 })
 export class DataComponent implements OnInit {
-  @Input() fields: Array<any>;
 
-  constructor() { }
+  constructor( public scoreService: ScoreService ) { }
 
   ngOnInit() {
   }
