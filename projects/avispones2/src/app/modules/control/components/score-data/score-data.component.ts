@@ -12,10 +12,10 @@ export class ScoreDataComponent implements OnInit {
 
   constructor( private scoreService: ScoreService ) {
     this.scoreForm = new FormGroup({
-      down: new FormControl('0'),
-      toGo: new FormControl('0'),
-      ballOn: new FormControl('0'),
-      qtr: new FormControl('0')
+      down: new FormControl('1'),
+      toGo: new FormControl('10'),
+      ballOn: new FormControl('30'),
+      qtr: new FormControl('1')
     });
   }
 
