@@ -48,3 +48,8 @@ Thumbs.db
 # Server files
 /server/score*
 /server/data*
+
+# Firebase
+/public
+.fire*
+fire*
