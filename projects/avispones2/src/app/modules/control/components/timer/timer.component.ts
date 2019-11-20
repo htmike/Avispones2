@@ -10,15 +10,19 @@ import { TimerService } from 'projects/avispones2/src/app/services/timer.service
 export class TimerComponent implements OnInit {
   timer: FormControl;
 
-  constructor( private timerService: TimerService ) {
+  constructor( public timerService: TimerService ) {
     this.timer = new FormControl('');
   }
 
   ngOnInit() {
   }
 
+  setTimer( time: any) {
+    alert(time)
+    this.timerService.timerData = time || '15:00';
+  }
+
   playTimer() {
-    this.timerService.timerData = JSON.stringify(this.timer.value);
     this.timerService.playTimer( this.timerService.timerData );
   }
 
