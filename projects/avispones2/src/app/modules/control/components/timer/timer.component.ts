@@ -18,7 +18,6 @@ export class TimerComponent implements OnInit {
   }
 
   setTimer( time: any) {
-    alert(time)
     this.timerService.timerData = time || '15:00';
   }
 
