@@ -1,5 +1,7 @@
+
+
 <mat-form-field>
-    <input type="time" matInput placeholder="Temporizador" formControl="timer" [value]="timerService.timerData">
+    <input type="time" matInput placeholder="Temporizador" (change)="setTimer(this.value)" [value]="timerService.timerData">
 </mat-form-field>
 <button mat-icon-button (click)="playTimer()">
     <mat-icon>play_arrow</mat-icon>

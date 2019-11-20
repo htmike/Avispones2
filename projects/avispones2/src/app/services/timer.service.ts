@@ -19,7 +19,7 @@ export class TimerService {
     let mins: number = parseInt(timer.split(':')[0], 10);
     let secs: number = parseInt(timer.split(':')[1], 10);
     this.timer = setInterval( () => {
-      if ( secs <= 0 && mins <= 0 ) { clearInterval(this.timer); }
+      if ( secs <= 0 && mins <= 0 ) { this.pauseTimer(); }
       if ( secs <= 0) {
         secs = 59;
         --mins;
@@ -36,6 +36,7 @@ export class TimerService {
   }
 
   resetTimer() {
+    this.pauseTimer()
     this.timerData = '15:00';
     this.setTimer(this.timerData);
   }
