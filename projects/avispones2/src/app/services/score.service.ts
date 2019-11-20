@@ -36,18 +36,17 @@ export class ScoreService {
   updateExtra( body: any ) {
     this.dataScore = body;
     localStorage.setItem( 'dataScore', JSON.stringify(body));
-    console.log(this.dataScore)
   }
 
   getDataScore() {
     const LOCAL = localStorage.getItem('dataScore');
-    this.dataScore = JSON.parse(LOCAL);
+    this.dataScore = JSON.parse(LOCAL) || this.dataScore;
   }
 
   getDataTeam() {
     const HOME = localStorage.getItem('home');
     const GUEST = localStorage.getItem('guest');
-    this.homeTeam = JSON.parse(HOME);
-    this.guestTeam = JSON.parse(GUEST);
+    this.homeTeam = JSON.parse(HOME) || this.homeTeam;
+    this.guestTeam = JSON.parse(GUEST) || this.guestTeam;
   }
 }

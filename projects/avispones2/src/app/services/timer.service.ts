@@ -9,7 +9,7 @@ export class TimerService {
 
   constructor() {
     setInterval( () => {
-      this.timerData = localStorage.getItem('timer');
+      this.timerData = localStorage.getItem('timer') || '15:00';
     });
   }
 
