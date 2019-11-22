@@ -1,6 +1,6 @@
 <section>
     <p>Seleccione equipo</p>
-    <mat-select placeholder="Equipo" value="home" #team>
+    <mat-select placeholder="Equipo" value="home" #team style="margin-bottom:16px">
         <mat-option value="home">
             HOME
         </mat-option>
@@ -8,7 +8,6 @@
             GUEST
         </mat-option>
     </mat-select>
-    <em>La imagen debe tener las dimensiones: 200px x 200px</em>
     <button mat-raised-button color="accent" (click)="logoUp.click()">Buscar imagen</button>
-    <input #logoUp type="file" name="" id="" hidden>
+    <input #logoUp type="file" name="" id="" hidden (change)="upload($event.target.files[0], team.value)">
 </section>
