@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSelect } from '@angular/material';
+import { ThumbnailService } from 'projects/avispones2/src/app/services/thumbnail.service';
+import { Team } from '../../../screen/classes/team';
+import { ScoreService } from 'projects/avispones2/src/app/services/score.service';
 
 @Component({
   selector: 'app-upload-logo',
@@ -7,14 +10,24 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./upload-logo.component.sass']
 })
 export class UploadLogoComponent implements OnInit {
+  team: MatSelect;
 
-  constructor( private ref: MatDialogRef<any> ) { }
+  constructor( private ref: MatDialogRef<any>, private thumbnail: ThumbnailService, private scoreService: ScoreService ) { }
 
   ngOnInit() {
   }
 
   close() {
     this.ref.close();
+  }
+
+  upload( file: any, team: string ) {
+    this.thumbnail.transform( file, 80, 80 ).subscribe( data => {
+      let local: Team;
+      local = JSON.parse(localStorage.getItem(team)) || team === 'home' ? new Team(1) : new Team(2, 'guest') ;
+      local.logo = data;
+      this.scoreService.updateScoreById( local.id, local );
+    });
   }
 
 }
