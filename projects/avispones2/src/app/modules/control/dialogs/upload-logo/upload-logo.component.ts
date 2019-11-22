@@ -24,9 +24,10 @@ export class UploadLogoComponent implements OnInit {
   upload( file: any, team: string ) {
     this.thumbnail.transform( file, 80, 80 ).subscribe( data => {
       let local: Team;
-      local = JSON.parse(localStorage.getItem(team)) || team === 'home' ? new Team(1) : new Team(2, 'guest') ;
+      local = JSON.parse(localStorage.getItem(team)) || '';
       local.logo = data;
       this.scoreService.updateScoreById( local.id, local );
+      this.ref.close();
     });
   }
 
