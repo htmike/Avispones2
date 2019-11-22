@@ -22,7 +22,9 @@ export class ScoreService {
     this.dataScore = new DataScore();
   }
 
-  updateScoreById( id: number, body: any ): void {
+  updateScoreById( id: number, body: Team ): void {
+    body.score = body.score > 99 ? 99 : body.score;
+    body.name = body.name.length > 10 ? 'sin nombre' : body.name;
     const BODY = JSON.stringify(body);
     if ( id === 1 ) {
       this.homeTeam = body;
@@ -33,7 +35,11 @@ export class ScoreService {
     }
   }
 
-  updateExtra( body: any ) {
+  updateExtra( body: DataScore ) {
+    body.down = body.down > 4 ? 4 : body.down;
+    body.toGo = body.toGo > 99 ? 99 : body.toGo;
+    body.ballOn = body.ballOn > 99 ? 99 : body.ballOn;
+    body.qtr = body.qtr > 4 ? 4 : body.qtr;
     this.dataScore = body;
     localStorage.setItem( 'dataScore', JSON.stringify(body));
   }

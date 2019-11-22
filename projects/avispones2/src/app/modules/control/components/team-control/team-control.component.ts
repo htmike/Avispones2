@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Team } from '../../../screen/classes/team';
 import { ScoreService } from 'projects/avispones2/src/app/services/score.service';
 import { MatSnackBar } from '@angular/material';
@@ -19,8 +19,8 @@ export class TeamControlComponent implements OnInit {
   ngOnInit() {
     this.teamScore = new FormGroup({
       id: new FormControl(this.team.id),
-      name: new FormControl(this.team.name),
-      score: new FormControl(this.team.score)
+      name: new FormControl(this.team.name, [Validators.maxLength(10)]),
+      score: new FormControl(this.team.score, [Validators.min(0), Validators.max(99)])
     });
   }
 
